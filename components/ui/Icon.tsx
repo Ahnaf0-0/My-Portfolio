@@ -29,7 +29,7 @@ export default function Icon({ name, size = 24, ...props }: IconProps) {
   if (lowerName === "linkedin") {
     return (
       <Image 
-        src="/Linkedin.png" 
+        src="/LinkedIn.png" 
         alt="LinkedIn" 
         width={logoSize} 
         height={logoSize} 
