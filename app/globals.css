@@ -1,26 +1,148 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* ── Design Tokens ── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --black: #020617;
+  --dark: #0f172a;
+  --panel: #1e293b;
+  --lift: #334155;
+  --silver: #f1f5f9;
+  --silver2: #94a3b8;
+  --dim: #64748b;
+  --white: #ffffff;
+  --rule: rgba(255, 255, 255, 0.05);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ── Base ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-behavior: smooth;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html, body, *, a, button {
+    cursor: none !important;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: transparent;
+  color: var(--white);
+  font-family: var(--font-dm-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  cursor: none;
+}
+
+::selection {
+  background: rgba(200, 200, 200, 0.2);
+  color: var(--white);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dim);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--silver2);
+}
+
+/* ── Keyframes ── */
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+
+@keyframes geoRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ── Utility Classes ── */
+.orb-float {
+  animation: orbFloat 6s ease-in-out infinite;
+}
+
+.geo-rotate {
+  animation: geoRotate 20s linear infinite;
+}
+
+.glass-shine {
+  position: relative;
+}
+
+.glass-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.045),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* ── Section Spacing ── */
+section {
+  position: relative;
+}
+
+/* ── Container ── */
+.container-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
