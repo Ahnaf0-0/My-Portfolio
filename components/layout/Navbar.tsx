@@ -107,11 +107,11 @@ export default function Navbar() {
 
           {/* CTA */}
           <a
-            href="#contact"
-            onClick={() => setActive(5)}
+            href="/Ahnaf_Hasan.pdf"
+            download="Ahnaf_Hasan.pdf"
             className="hidden md:block px-5 py-2 text-sm bg-silver text-black rounded-full font-medium hover:bg-white transition-colors duration-200"
           >
-            Get in Touch
+            Download CV
           </a>
 
           {/* Mobile Menu Button */}
