@@ -26,12 +26,13 @@ function Blob({ position, color, speed, radius, scrollY, ...props }: any) {
   return (
     <Float speed={speed} rotationIntensity={0.2} floatIntensity={0.5}>
       <mesh ref={mesh} position={position} scale={radius} {...props}>
-        <icosahedronGeometry args={[1, 15]} />
+        {/* Reduced geometry segments from 15 to 8 for performance */}
+        <icosahedronGeometry args={[1, 8]} />
         <MeshTransmissionMaterial
-          backside
-          backsideThickness={2}
+          backside={false} // Disabled backside rendering for performance
           thickness={1.5}
-          samples={8}
+          // Reduced samples from 8 to 4
+          samples={4}
           transmission={1}
           clearcoat={0.5}
           clearcoatRoughness={0}
@@ -55,8 +56,11 @@ export default function GlassBlobs() {
     <div className="absolute inset-0 z-0 opacity-40">
       <Canvas
         camera={{ position: [0, 0, 10], fov: 45 }}
-        dpr={[1, 2]}
-        gl={{ antialias: true, alpha: true }}
+        // Set dpr to max 1.5 to prevent pixel overflow lag on high DPI screens
+        dpr={[1, 1.5]}
+        // Drop alpha from config to use default and enable precision
+        gl={{ antialias: false, powerPreference: "high-performance" }}
+        frameloop="demand" // Only render on demand/interaction and animations
       >
         <Suspense fallback={null}>
           <ambientLight intensity={0.4} />

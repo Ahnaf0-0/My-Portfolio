@@ -103,9 +103,23 @@ export default function Contact() {
                 <div className="space-y-4">
                   {references.map((ref) => (
                     <div key={ref.name}>
-                      <p className="text-sm text-silver font-medium">
-                        {ref.name}
-                      </p>
+                      {ref.url ? (
+                        <a 
+                          href={ref.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="group inline-flex items-center gap-[6px] text-sm text-[#00e5ff] font-medium hover:text-white transition-colors duration-300 w-fit"
+                        >
+                          {ref.name}
+                          <svg className="w-3 h-3 opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </a>
+                      ) : (
+                        <p className="text-sm text-silver font-medium">
+                          {ref.name}
+                        </p>
+                      )}
                       <p className="text-xs text-dim">{ref.title}</p>
                       <p className="text-xs text-dim">{ref.institution}</p>
                       {ref.email && (

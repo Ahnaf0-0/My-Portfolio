@@ -27,41 +27,32 @@ export default function Projects() {
         {featured && (
           <ScrollReveal className="mb-8">
             <GlassCard className="p-0 overflow-hidden" hover={false}>
-              <div className="grid grid-cols-1 lg:grid-cols-2">
-                {/* Left */}
-                <div className="p-8 lg:p-10 flex flex-col justify-center">
-                  <div className="inline-flex mb-4">
-                    <span className="text-[10px] uppercase tracking-widest text-dim px-3 py-1 bg-lift rounded-full border border-white/[0.07]">
-                      Featured
-                    </span>
-                  </div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-dim mb-2">
-                    {featured.type}
-                  </p>
-                  <h3 className="font-serif text-2xl md:text-3xl text-white mb-4">
-                    {featured.title}
-                  </h3>
-                  <p className="text-sm text-silver2/60 font-light leading-relaxed mb-6">
-                    {featured.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {featured.stack.map((s) => (
-                      <Chip key={s} label={s} />
-                    ))}
-                  </div>
+              <div className="p-8 lg:p-10 flex flex-col justify-center relative">
+                {/* Orb decoration for featured card */}
+                <div
+                  className="absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-[0.03] pointer-events-none"
+                  style={{
+                    background: "radial-gradient(circle, #00e5ff, transparent 70%)",
+                  }}
+                />
+                
+                <div className="inline-flex mb-4">
+                  <span className="text-[10px] uppercase tracking-widest text-[#00e5ff] px-3 py-1 bg-[#00e5ff]/5 rounded-full border border-[#00e5ff]/20">
+                    Featured
+                  </span>
                 </div>
-
-                {/* Right — Metrics */}
-                <div className="p-8 lg:p-10 bg-lift/30 border-l border-white/[0.07] flex flex-col justify-center space-y-6">
-                  <h4 className="text-xs uppercase tracking-[0.2em] text-dim mb-2">
-                    Performance Metrics
-                  </h4>
-                  {featured.metrics?.map((m) => (
-                    <MetricBar
-                      key={m.label}
-                      label={m.label}
-                      value={m.value}
-                    />
+                <p className="text-xs uppercase tracking-[0.2em] text-dim mb-2 relative z-10">
+                  {featured.type}
+                </p>
+                <h3 className="font-serif text-2xl md:text-3xl text-white mb-4 relative z-10">
+                  {featured.title}
+                </h3>
+                <p className="text-sm text-silver2/60 font-light leading-relaxed mb-6 max-w-2xl relative z-10">
+                  {featured.description}
+                </p>
+                <div className="flex flex-wrap gap-2 relative z-10">
+                  {featured.stack.map((s) => (
+                    <Chip key={s} label={s} />
                   ))}
                 </div>
               </div>

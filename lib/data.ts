@@ -62,6 +62,7 @@ export interface Reference {
   institution: string;
   email?: string;
   phone?: string;
+  url?: string;
 }
 
 /* ── Data Constants ── */
@@ -149,11 +150,6 @@ export const projects: Project[] = [
     description:
       "Designed an AI-driven predictive demand system to forecast energy requirements based on historical data. Optimized renewable energy usage and developed intelligent battery scheduling strategies for efficiency.",
     stack: ["Python", "Deep Learning", "Predictive Analytics", "Energy Optimization"],
-    metrics: [
-      { label: "Prediction Accuracy", value: 91 },
-      { label: "Energy Efficiency", value: 87 },
-      { label: "Cost Reduction", value: 74 },
-    ],
   },
   {
     type: "AI / Automation",
@@ -247,6 +243,7 @@ export const references: Reference[] = [
     title: "Founder & CEO",
     institution: "Techmak Technology Ltd.",
     phone: "01611-224433",
+    url: "https://tusher.online/",
   },
 ];
 
